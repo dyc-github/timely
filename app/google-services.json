@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "479044839820",
+    "firebase_url": "https://timely-84f06.firebaseio.com",
+    "project_id": "timely-84f06",
+    "storage_bucket": "timely-84f06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479044839820:android:681660241c5a1962",
+        "android_client_info": {
+          "package_name": "timely.com.timely"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479044839820-fgm3n9sqbf18k9to87ic1p4vuc4plslq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgTQcNQ6Z45lvVCdvru0oBAmDZoV8-glw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479044839820-fgm3n9sqbf18k9to87ic1p4vuc4plslq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
