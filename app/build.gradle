@@ -36,6 +36,13 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1'
+
+
+    def nav_version = "1.0.0-alpha09"
+
+    implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
 }
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'androidx.navigation.safeargs'

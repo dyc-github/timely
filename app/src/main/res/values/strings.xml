@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Timely</string>
+
+
+    <!--Onboarding Strings-->
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
+
 </resources>
