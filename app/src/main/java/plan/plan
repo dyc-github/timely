@@ -1,0 +1,26 @@
+Feed (Launch + Login)
+- Shows friends' current activities, history, etc.
+
+Profile
+- Friends list, history
+- Profile picture, stats
+- Show FAB option to start new study group
+
+Messages
+- List of DMs
+
+History
+- List of study group history, where each contains title, timeline of when users left, etc.
+
+Start New Study Group Page
+- Invite friends, set time frame, have a pre-chat box
+- Friends must indicate they are ready before host can start
+- Once started, all users will be force deep-linked into the study group where ever they are (in the app or outside of app)
+
+Study Group
+- If user leaves app, they get kicked out. Back button doesn't work. If user tries to minimize/close app, show warning.
+- Show time ticking or some EXTRA animation or something idk that looks like they are working their way towards something
+- Group chat
+
+
+Tabs = Profile, Feed, Messages
