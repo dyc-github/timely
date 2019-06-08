@@ -1,4 +1,4 @@
-package timely.com.timely
+package timely.com.timely.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_onbaording_launch.*
+import timely.com.timely.R
 
 class OnboardingLaunchFragment : Fragment() {
 
