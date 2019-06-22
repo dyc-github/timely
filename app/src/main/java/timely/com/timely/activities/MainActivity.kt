@@ -1,17 +1,16 @@
 package timely.com.timely.activities
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 import timely.com.timely.R
-import timely.com.timely.bindView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
-    val bottomNavigationView: BottomNavigationView by bindView(R.id.bottom_navigation_view)
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -37,8 +36,8 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.main_nav_fragment)
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        bottomNavigationView.selectedItemId = R.id.navigation_feed
+        bottom_navigation_view.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        bottom_navigation_view.selectedItemId = R.id.navigation_feed
     }
 
     override fun onSupportNavigateUp(): Boolean = navController.navigateUp()

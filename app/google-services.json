@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "479044839820-hqp55cgu1it61askno989j13h9r4627u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "timely.com.timely",
+            "certificate_hash": "5e33758e7f426392457761c702428805db167ef7"
+          }
+        },
+        {
           "client_id": "479044839820-fgm3n9sqbf18k9to87ic1p4vuc4plslq.apps.googleusercontent.com",
           "client_type": 3
         }
