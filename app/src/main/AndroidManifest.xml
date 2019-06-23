@@ -3,15 +3,16 @@
           package="timely.com.timely">
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:name=".TimelyApplication"
+        android:theme="@style/AppTheme">
         <activity
-                android:name=".activities.MainActivity"
-                android:label="@string/title_activity_main">
+            android:name=".activities.MainActivity"
+            android:label="@string/title_activity_main">
         </activity>
         <activity android:name=".activities.OnboardingActivity">
             <intent-filter>

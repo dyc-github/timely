@@ -2,11 +2,11 @@ package timely.com.timely.vms
 
 import androidx.lifecycle.ViewModel
 import timely.com.timely.activities.MainActivity
-import timely.com.timely.helpers.ActivityLauncherInterface
-import timely.com.timely.helpers.FirebaseAuthenticationHelperInterface
+import timely.com.timely.helpers.ActivityLauncher
+import timely.com.timely.helpers.FirebaseAuthenticationHelper
 
-class SignUpFragmentViewModel(private val firebaseAuthHelper: FirebaseAuthenticationHelperInterface, private val activityLauncher: ActivityLauncherInterface) : ViewModel() {
-    fun createAccount(email: String, password: String) {
+class SignUpFragmentViewModelImpl(private val firebaseAuthHelper: FirebaseAuthenticationHelper, private val activityLauncher: ActivityLauncher) : SignUpFragmentViewModel, ViewModel() {
+    override fun createAccount(email: String, password: String) {
         firebaseAuthHelper.createAccount(email, password, createAccountCallback)
     }
 
@@ -18,4 +18,8 @@ class SignUpFragmentViewModel(private val firebaseAuthHelper: FirebaseAuthentica
             // toast
         }
     }
+}
+
+interface SignUpFragmentViewModel {
+    fun createAccount(email: String, password: String)
 }
