@@ -6,10 +6,10 @@ import javax.inject.Inject
 
 class FirebaseAuthenticationHelperImpl @Inject constructor(private val activity: AppCompatActivity, private val firebaseAuth: FirebaseAuth) : FirebaseAuthenticationHelper {
     override fun createAccount(email: String, password: String, callback: (Boolean) -> Unit) {
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(activity) { task ->
-                callback.invoke(task.isSuccessful)
-            }
+            firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(activity) { task ->
+                    callback.invoke(task.isSuccessful)
+                }
     }
 }
 
