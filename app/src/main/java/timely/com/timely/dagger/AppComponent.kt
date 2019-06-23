@@ -1,9 +1,11 @@
 package timely.com.timely.dagger
 
-import com.google.firebase.database.FirebaseDatabase
 import dagger.Component
+import timely.com.timely.fragments.SignUpFragment
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
-    val firebaseDatabase: FirebaseDatabase
+    fun inject(signUpFragment: SignUpFragment)
 }
