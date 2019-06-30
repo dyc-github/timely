@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.fragment_onbaording_launch.sign_up_button
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import timely.com.timely.R
 import timely.com.timely.TimelyApplication
-import timely.com.timely.enums.ValidationState
 import timely.com.timely.vms.SignUpFragmentViewModel
 import javax.inject.Inject
 
@@ -26,25 +25,16 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ((context as AppCompatActivity).application as TimelyApplication).component.inject(this)
-        sign_up_button.setOnClickListener {
-            val validationState =
-                viewModel.createAccount(email_edit_text.text.toString(), password_edit_text.text.toString())
-            when (validationState) {
-                ValidationState.INVALIDBOTH -> {
-                    invalidEmail()
-                    invalidPass()
-                }
-                ValidationState.INVALIDEMAIL -> invalidEmail()
-                ValidationState.INVALIDPASS -> invalidPass()
-            }
+
+        viewModel.showSpinnerAndMakeUIUnresponsiveCallback = {
+            // show SPINNER
         }
-    }
 
-    private fun invalidEmail() {
-        email_edit_text.setError("Invalid Email")
-    }
 
-    private fun invalidPass() {
-        password_edit_text.setError("Invalid Password")
+        sign_up_button.setOnClickListener {
+            val email = email_edit_text.text.toString()
+            val password = password_edit_text.text.toString()
+            viewModel.createAccountIfValid(email, password)
+        }
     }
 }
