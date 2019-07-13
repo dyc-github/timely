@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import timely.com.timely.R
+import timely.com.timely.TimelyApplication
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        (application as TimelyApplication).setComponent(this)
 
         navController = findNavController(R.id.main_nav_fragment)
 

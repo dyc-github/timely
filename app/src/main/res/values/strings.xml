@@ -24,6 +24,9 @@
     <string name="next">Next</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    
+    <string name="strikes_template">Strikes: {amount}</string>
+    <string name="wins_template">Wins: {amount}</string>
 
     <string name="no_account_text">Don\'t have an account?\u0020</string>
 

@@ -1,14 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent" android:layout_height="match_parent"
              tools:context=".fragments.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
+
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <ImageView android:layout_width="100dp" android:layout_height="100dp"
+                   android:id="@+id/profile_picture"
+                   android:background="@drawable/circle"
+                   android:layout_marginTop="100dp"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  app:layout_constraintTop_toBottomOf="@+id/profile_picture"
+                  android:layout_marginStart="22dp"
+                  android:layout_marginTop="22dp"
+                  app:layout_constraintStart_toStartOf="parent"
+                  android:textSize="@dimen/standard_text_size"
+                  tools:text="Kevin"
+                  android:id="@+id/first_name"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  app:layout_constraintTop_toBottomOf="@+id/profile_picture"
+                  android:layout_marginStart="5dp"
+                  android:layout_marginTop="22dp"
+                  app:layout_constraintStart_toEndOf="@+id/first_name"
+                  android:textSize="@dimen/standard_text_size"
+                  tools:text="Minguk"
+                  android:id="@+id/middle_name"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  app:layout_constraintTop_toBottomOf="@+id/profile_picture"
+                  android:layout_marginStart="5dp"
+                  android:layout_marginTop="22dp"
+                  app:layout_constraintStart_toEndOf="@+id/middle_name"
+                  android:textSize="@dimen/standard_text_size"
+                  tools:text="Seo"
+                  android:id="@+id/last_name"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  app:layout_constraintTop_toBottomOf="@+id/first_name"
+                  android:layout_marginStart="22dp"
+                  android:layout_marginTop="22dp"
+                  app:layout_constraintStart_toStartOf="parent"
+                  android:textSize="@dimen/standard_text_size"
+                  tools:text="University of California, Berkeley"
+                  android:id="@+id/school_name"/>
+
+        <View
+            android:id="@+id/divider"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="PROFILE"/>
+            app:layout_constraintTop_toBottomOf="@+id/school_name"
+            android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      app:layout_constraintTop_toBottomOf="@+id/divider"
+                      android:layout_marginTop="14dp"
+                      android:weightSum="2"
+                      android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/strikes" android:layout_width="wrap_content" android:layout_weight="1"
+                android:layout_height="wrap_content"
+                tools:text="Strikes: 14"/>
+
+            <TextView
+                android:id="@+id/wins" android:layout_width="wrap_content" android:layout_weight="1"
+                android:layout_height="wrap_content"
+                tools:text="Wins: 14"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>
