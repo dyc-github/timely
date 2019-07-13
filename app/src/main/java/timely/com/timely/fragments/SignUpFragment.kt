@@ -5,14 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_onbaording_launch.sign_up_button
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import timely.com.timely.R
 import timely.com.timely.TimelyApplication
-import timely.com.timely.enums.InvalidInput
 import timely.com.timely.vms.SignUpFragmentViewModel
 import javax.inject.Inject
 
@@ -30,14 +28,13 @@ class SignUpFragment : Fragment() {
         ((context as AppCompatActivity).application as TimelyApplication).component.inject(this)
 
         viewModel.showSpinnerAndMakeUIUnresponsiveCallback = { showSpinner ->
-            if(showSpinner) {
+            if (showSpinner) {
                 progress_spinner.visibility = View.VISIBLE
                 loading_back.visibility = View.VISIBLE
                 email_edit_text.isEnabled = false
                 password_edit_text.isEnabled = false
                 sign_up_button.isEnabled = false
-            }
-            else{
+            } else {
                 progress_spinner.visibility = View.INVISIBLE
                 loading_back.visibility = View.INVISIBLE
                 email_edit_text.isEnabled = true
@@ -46,18 +43,16 @@ class SignUpFragment : Fragment() {
             }
         }
 
-        viewModel.inputError = { invalidInput ->
-            //Based off input give UI error
-            if(invalidInput == InvalidInput.INVALIDEMAIL || invalidInput == InvalidInput.INVALIDBOTH){
-                email_edit_text.setError("Ya messed up the email ya dimwit")
-            }
-            if(invalidInput == InvalidInput.INVALIDPASSWORD || invalidInput == InvalidInput.INVALIDBOTH){
-                password_edit_text.setError("The paasword's wrong ya retard")
-            }
+        viewModel.invalidEmailCallback = {
+            email_edit_text.error = view.context.getString(R.string.email_failure)
         }
 
-        viewModel.toastOutputCallbackFail = {
-            val snackbar = Snackbar.make(signupview, "This is Simple Snackbar", Snackbar.LENGTH_SHORT)
+        viewModel.invalidPasswordCallback = {
+            password_edit_text.error = view.context.getString(R.string.password_failure)
+        }
+
+        viewModel.createAccountFailCallback = {
+            val snackbar = Snackbar.make(signupview, R.string.server_failure, Snackbar.LENGTH_SHORT)
             snackbar.show()
         }
 

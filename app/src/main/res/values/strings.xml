@@ -11,6 +11,11 @@
     <string name="feed">Feed</string>
     <string name="messages">Messages</string>
 
+    <!--User Error Messages-->
+    <string name="email_failure">Please enter a valid email</string>
+    <string name="password_failure">The password must be at least 7 characters</string>
+    <string name="server_failure">Network Error</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_button"><u>Log In</u></string>
