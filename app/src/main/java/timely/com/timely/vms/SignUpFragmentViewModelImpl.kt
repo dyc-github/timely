@@ -24,14 +24,14 @@ class SignUpFragmentViewModelImpl(
                 createAccount(email, password)
             }
             !isValidEmail(email) && password.length < 7 -> {
-                invalidEmailCallback()
-                invalidPasswordCallback()
+                invalidEmailCallback.invoke()
+                invalidPasswordCallback.invoke()
             }
             !isValidEmail(email) -> {
-                invalidEmailCallback()
+                invalidEmailCallback.invoke()
             }
             else -> {
-                invalidPasswordCallback()
+                invalidPasswordCallback.invoke()
             }
         }
     }
