@@ -4,6 +4,7 @@ import android.text.TextUtils
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import timely.com.timely.activities.MainActivity
+import timely.com.timely.fragments.LoginFragment
 import timely.com.timely.helpers.ActivityLauncher
 import timely.com.timely.helpers.FirebaseAuthenticationHelper
 
@@ -35,9 +36,7 @@ class SignUpFragmentViewModelImpl(
             }
         }
     }
-
     private val createAccountCallback: (Boolean) -> Unit = { isSuccessful ->
-        // stop the spinner + make UI responsive (do I really have to do this?)
         showSpinnerAndMakeUIUnresponsiveCallback(false)
         if (isSuccessful) {
             // start activity
@@ -45,6 +44,10 @@ class SignUpFragmentViewModelImpl(
         } else {
             createAccountFailCallback.invoke()
             }
+    }
+
+    override fun logInRedirect() {
+        activityLauncher.startActivity(LoginFragment::class.java)
     }
 
     private fun isValidEmail(target: CharSequence): Boolean {
@@ -59,6 +62,7 @@ class SignUpFragmentViewModelImpl(
 
 
 interface SignUpFragmentViewModel {
+    fun logInRedirect()
     fun createAccountIfValid(email: String, password: String)
     var showSpinnerAndMakeUIUnresponsiveCallback: (Boolean) -> Unit
     var invalidPasswordCallback: () -> Unit

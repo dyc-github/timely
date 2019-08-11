@@ -20,5 +20,9 @@ class OnboardingLaunchFragment : Fragment() {
         sign_up_button.setOnClickListener {
             findNavController().navigate(R.id.action_onboardingLaunchFragment_to_signUpFragment)
         }
+
+        log_in_button.setOnClickListener {
+            findNavController().navigate(R.id.action_onboardingLaunchFragment_to_loginFragment)
+        }
     }
 }

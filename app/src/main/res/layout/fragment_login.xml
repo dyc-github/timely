@@ -7,7 +7,7 @@
              tools:context=".fragments.SignUpFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/signupview"
+        android:id="@+id/log_in_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="110dp"
-            android:text="@string/sign_up"
+            android:text="@string/login"
             android:textAppearance="@style/TimelyTitleStyle"
             android:gravity="center_horizontal"/>
 
@@ -73,7 +73,7 @@
             android:singleLine="true"/>
 
         <Button
-            android:id="@+id/sign_up_button"
+            android:id="@+id/log_in_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="34dp"
@@ -83,7 +83,7 @@
             android:enabled="true"
             android:layout_marginBottom="54dp"
             android:background="@drawable/rounded_corners"
-            android:text="@string/next"/>
+            android:text="@string/login"/>
 
         <LinearLayout
             android:id="@+id/login_container"
@@ -101,14 +101,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_gravity="center_vertical"
-                android:text="@string/already_have_account_text"/>
+                android:text="@string/no_account_text"/>
 
             <TextView
-                android:id="@+id/log_in_redirect"
+                android:id="@+id/sign_up_redirect"
                 android:textSize="16sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_underline"
+                android:text="@string/sign_up_underline"
                 android:layout_gravity="center_vertical"/>
 
         </LinearLayout>
