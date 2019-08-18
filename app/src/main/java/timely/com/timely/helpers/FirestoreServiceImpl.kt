@@ -16,4 +16,14 @@ class FirestoreServiceImpl @Inject constructor(private val firebaseFirestore: Fi
                 callback.invoke(null)
             }
     }
+
+    override fun createUser(user: User, callback: (Boolean) -> Unit) {
+        firebaseFirestore.collection("users").add(user).addOnSuccessListener {
+            callback.invoke(true)
+        }.addOnCanceledListener {
+            callback.invoke(false)
+        }.addOnFailureListener {
+            callback.invoke(false)
+        }
+    }
 }
