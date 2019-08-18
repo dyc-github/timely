@@ -16,7 +16,8 @@ import timely.com.timely.helpers.FirebaseAuthenticationHelper
 class LoginFragmentViewModelImpl(
     private val firebaseAuthHelper: FirebaseAuthenticationHelper,
     private val activityLauncher: ActivityLauncher,
-    private val firebaseAuth: FirebaseAuth) : LoginFragmentViewModel, ViewModel() {
+    private val firebaseAuth: FirebaseAuth
+) : LoginFragmentViewModel, ViewModel() {
 
     override var showSpinnerAndMakeUIUnresponsiveCallback: (Boolean) -> Unit = {}
     override var userSignedInCallback: () -> Unit = {}
@@ -28,16 +29,16 @@ class LoginFragmentViewModelImpl(
             .addOnCompleteListener { task ->
                 showSpinnerAndMakeUIUnresponsiveCallback(false)
                 if (task.isSuccessful) {
-                    activityLauncher.startActivity(MainActivity::class.java)                }
-                else {
+                    activityLauncher.startActivity(MainActivity::class.java)
+                } else {
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     loginFailCallback.invoke()
 
                 }
             }
-        }
+    }
 
-    override fun signUpRedirect(){
+    override fun signUpRedirect() {
         activityLauncher.startActivity(SignUpFragment::class.java)
     }
 }

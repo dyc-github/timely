@@ -36,8 +36,6 @@ class SignUpFragment : Fragment() {
                 password_edit_text.isEnabled = false
                 sign_up_button.isEnabled = false
                 log_in_redirect.isEnabled = false
-
-
             } else {
                 progress_spinner.visibility = View.INVISIBLE
                 loading_back.visibility = View.INVISIBLE
