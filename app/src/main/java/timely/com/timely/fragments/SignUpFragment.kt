@@ -35,12 +35,16 @@ class SignUpFragment : Fragment() {
                 email_edit_text.isEnabled = false
                 password_edit_text.isEnabled = false
                 sign_up_button.isEnabled = false
+                log_in_redirect.isEnabled = false
+
+
             } else {
                 progress_spinner.visibility = View.INVISIBLE
                 loading_back.visibility = View.INVISIBLE
                 email_edit_text.isEnabled = true
                 password_edit_text.isEnabled = true
                 sign_up_button.isEnabled = true
+                log_in_redirect.isEnabled = true
             }
         }
 
@@ -53,8 +57,8 @@ class SignUpFragment : Fragment() {
         }
 
         viewModel.createAccountFailCallback = {
-            val snackbar = Snackbar.make(signupview, R.string.login_failed, Snackbar.LENGTH_SHORT)
-            snackbar.show()
+            val loginFailedBar = Snackbar.make(signupview, R.string.login_failed, Snackbar.LENGTH_SHORT)
+            loginFailedBar.show()
         }
 
         log_in_redirect.setOnClickListener{
