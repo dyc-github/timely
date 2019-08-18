@@ -12,9 +12,13 @@ import timely.com.timely.helpers.ActivityLauncherImpl
 import timely.com.timely.helpers.ActivityLauncher
 import timely.com.timely.helpers.FirebaseAuthenticationHelperImpl
 import timely.com.timely.helpers.FirebaseAuthenticationHelper
+import timely.com.timely.vms.LoginFragmentViewModel
+import timely.com.timely.vms.LoginFragmentViewModelImpl
 import timely.com.timely.vms.SignUpFragmentViewModel
 import timely.com.timely.vms.SignUpFragmentViewModelImpl
+import timely.com.timely.vms.factories.LoginFragmentViewModelFactory
 import timely.com.timely.vms.factories.SignUpFragmentViewModelFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -25,7 +29,13 @@ class AppModule(private val activity: AppCompatActivity) {
 
     @Provides
     @Reusable
+    @Named("SignUpFragmentViewModelFactory")
     fun provideSignUpFragmentViewModelFactory(factory: SignUpFragmentViewModelFactory): ViewModelProvider.Factory = factory
+
+    @Provides
+    @Reusable
+    @Named("LoginFragmentViewModelFactory")
+    fun provideLoginFragmentViewmodelFactory(factory: LoginFragmentViewModelFactory): ViewModelProvider.Factory = factory
 
     @Provides
     @Reusable
@@ -44,7 +54,12 @@ class AppModule(private val activity: AppCompatActivity) {
     fun provideFirebaseAuthentication(): FirebaseAuth = FirebaseAuth.getInstance()
 
     @Provides
-    fun provideSignUpFragmentViewModel(factory: ViewModelProvider.Factory): SignUpFragmentViewModel {
+    fun provideSignUpFragmentViewModel(@Named("SignUpFragmentViewModelFactory") factory: ViewModelProvider.Factory): SignUpFragmentViewModel {
         return ViewModelProviders.of(activity, factory).get(SignUpFragmentViewModelImpl::class.java)
+    }
+
+    @Provides
+    fun provideLoginFragmentViewModel(@Named("LoginFragmentViewModelFactory") factory: ViewModelProvider.Factory): LoginFragmentViewModel {
+        return ViewModelProviders.of(activity, factory).get(LoginFragmentViewModelImpl::class.java)
     }
 }
