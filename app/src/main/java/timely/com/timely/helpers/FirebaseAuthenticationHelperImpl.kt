@@ -12,7 +12,7 @@ class FirebaseAuthenticationHelperImpl @Inject constructor(private val activity:
                     if (task.isSuccessful) {
                         firebaseAuth.currentUser?.uid?.let { uid ->
                             val user = User(email = email, firstName = "Jo", middleName = "Jo", lastName = "Reference", uid = uid)
-                            firestoreService.createUser(user, {})
+                            firestoreService.createUser(user, userCreationCallback)
                         }
                     }
                     callback.invoke(task.isSuccessful)
@@ -21,7 +21,7 @@ class FirebaseAuthenticationHelperImpl @Inject constructor(private val activity:
 
     private val userCreationCallback: (Boolean) -> Unit = { isSuccessful ->
         if (!isSuccessful) {
-            firebaseAuth
+            firebaseAuth.currentUser?.delete()
         }
     }
 }
