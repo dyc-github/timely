@@ -5,6 +5,7 @@ data class User(
     val firstName: String = "",
     val lastName: String = "",
     val middleName: String = "",
+    val uid: String = "",
     val school: String = "",
     val strikes: Int = 0,
     val wins: Int = 0)

@@ -64,7 +64,6 @@ class SignUpFragment : Fragment() {
         }
 
         sign_up_button.setOnClickListener {
-
             val email = email_edit_text.text.toString()
             val password = password_edit_text.text.toString()
             viewModel.createAccountIfValid(email, password)
