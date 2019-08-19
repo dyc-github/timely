@@ -1,10 +1,11 @@
 package timely.com.timely.vms
 
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import timely.com.timely.data.User
 import timely.com.timely.helpers.FirestoreService
 
-class ProfileFragmentViewModelImpl(private val firestoreService: FirestoreService) : ProfileFragmentViewModel, ViewModel() {
+class ProfileFragmentViewModelImpl(private val firestoreService: FirestoreService, private val firebaseAuth: FirebaseAuth) : ProfileFragmentViewModel, ViewModel() {
     override var firstNameCallback: (firstName: String) -> Unit = {}
     override var middleNameCallback: (middleName: String) -> Unit = {}
     override var lastNameCallback: (lastName: String) -> Unit = {}
@@ -27,9 +28,12 @@ class ProfileFragmentViewModelImpl(private val firestoreService: FirestoreServic
                 firstNameCallback.invoke("ERRROOOOOORRRRR")
             }
         }
+        firestoreService
     }
 
     override fun bind() {
-        firestoreService.getUser(userCallback)
+        firebaseAuth.currentUser?.uid?.let { uid ->
+            firestoreService.getUser(userCallback, uid)
+        }
     }
 }
