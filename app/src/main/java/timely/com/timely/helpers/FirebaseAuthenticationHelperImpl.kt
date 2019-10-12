@@ -11,7 +11,7 @@ class FirebaseAuthenticationHelperImpl @Inject constructor(private val activity:
                 .addOnCompleteListener(activity) { task ->
                     if (task.isSuccessful) {
                         firebaseAuth.currentUser?.uid?.let { uid ->
-                            val user = User(email = email, firstName = "Jo", middleName = "Jo", lastName = "Reference", uid = uid)
+                            val user = User(email = email, firstName = "FirstName", middleName = "MiddleName", lastName = "LastName", uid = uid)
                             firestoreService.createUser(user, userCreationCallback)
                         }
                     }

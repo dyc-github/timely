@@ -14,6 +14,7 @@ import dagger.Reusable
 import timely.com.timely.helpers.*
 import timely.com.timely.vms.*
 import timely.com.timely.vms.factories.LoginFragmentViewModelFactory
+import timely.com.timely.vms.factories.MessagesFragmentViewModelFactory
 import timely.com.timely.vms.factories.ProfileFragmentViewModelFactory
 import timely.com.timely.vms.factories.SignUpFragmentViewModelFactory
 import javax.inject.Named
@@ -37,6 +38,11 @@ class AppModule(private val activity: AppCompatActivity) {
     @Reusable
     @Named("LoginFragmentViewModelFactory")
     fun provideLoginFragmentViewmodelFactory(factory: LoginFragmentViewModelFactory): ViewModelProvider.Factory = factory
+
+    @Provides
+    @Reusable
+    @Named("MessagesFragmentViewModelFactory")
+    fun provideMessagesFragmentViewModelFactory(factory: MessagesFragmentViewModelFactory): ViewModelProvider.Factory = factory
 
     @Provides
     @Reusable
@@ -86,5 +92,10 @@ class AppModule(private val activity: AppCompatActivity) {
     @Provides
     fun provideProfileFragmentViewModel(factory: ProfileFragmentViewModelFactory): ProfileFragmentViewModel {
         return ViewModelProviders.of(activity, factory).get(ProfileFragmentViewModelImpl::class.java)
+    }
+
+    @Provides
+    fun provideMessagesFragmentViewModel(@Named("MessagesFragmentViewModelFactory") factory: ViewModelProvider.Factory): MessagesFragmentViewModel {
+        return ViewModelProviders.of(activity, factory).get(MessagesFragmentViewModel::class.java)
     }
 }
