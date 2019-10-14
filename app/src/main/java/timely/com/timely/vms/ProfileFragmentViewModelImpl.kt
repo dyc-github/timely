@@ -17,7 +17,9 @@ class ProfileFragmentViewModelImpl(lifecycleOwner: LifecycleOwner, private val f
     override var winsCallback: (wins: String) -> Unit = {}
 
     private val userCallback: (callback: User?) -> Unit = { user ->
-        userRepository.userLiveData.postValue(user)
+        user?.let {
+            userRepository.userLiveData.postValue(it)
+        }
     }
 
     private val userObserver = Observer<User> { user ->
@@ -38,7 +40,7 @@ class ProfileFragmentViewModelImpl(lifecycleOwner: LifecycleOwner, private val f
     }
 
     override fun bind() {
-        userRepository.update()
+        userRepository.refresh()
         firebaseAuth.currentUser?.uid?.let { uid ->
             firestoreService.getUser(userCallback, uid)
         }
