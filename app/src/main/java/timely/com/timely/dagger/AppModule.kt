@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.room.Room
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -11,6 +12,8 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
+import timely.com.timely.dao.UserDao
+import timely.com.timely.databases.UserDatabase
 import timely.com.timely.helpers.*
 import timely.com.timely.vms.*
 import timely.com.timely.vms.factories.LoginFragmentViewModelFactory
@@ -28,6 +31,11 @@ class AppModule(private val activity: AppCompatActivity) {
 
     @Provides
     fun provideContext(): Context = activity
+
+    @Provides
+    @Singleton
+    fun provideUserDao(context: Context): UserDao = Room.databaseBuilder(context.applicationContext,
+        UserDatabase::class.java, "user_database").build().userDao()
 
     @Provides
     @Reusable

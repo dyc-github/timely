@@ -3,14 +3,16 @@ package timely.com.timely.helpers
 import com.google.firebase.firestore.FirebaseFirestore
 import timely.com.timely.data.Message
 import timely.com.timely.data.User
+import timely.com.timely.repositories.UserRepository
 import javax.inject.Inject
 
-class FirestoreServiceImpl @Inject constructor(private val firebaseFirestore: FirebaseFirestore) : FirestoreService {
+class FirestoreServiceImpl @Inject constructor(private val firebaseFirestore: FirebaseFirestore, private val userRepository: UserRepository) : FirestoreService {
     override fun getUser(callback: (User?) -> Unit, userId: String) {
         firebaseFirestore.collection("users").whereEqualTo("uid", userId)
             .get()
             .addOnSuccessListener {
-                callback.invoke(it.first().toObject(User::class.java))
+                val user = it.first().toObject(User::class.java)
+                callback.invoke(user)
             }.addOnFailureListener {
                 callback.invoke(null)
             }.addOnCanceledListener {
@@ -19,8 +21,9 @@ class FirestoreServiceImpl @Inject constructor(private val firebaseFirestore: Fi
     }
 
     override fun createUser(user: User, callback: (Boolean) -> Unit) {
-        firebaseFirestore.collection("users").add(user).addOnSuccessListener {
+        firebaseFirestore.collection("users").document(user.uid).set(user).addOnSuccessListener {
             callback.invoke(true)
+            userRepository.addNewUserToDao(user)
         }.addOnCanceledListener {
             callback.invoke(false)
         }.addOnFailureListener {
